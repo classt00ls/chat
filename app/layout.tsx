@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { StackProvider, StackTheme } from "@stackframe/stack";
+import { stackServerApp } from "../stack";
 import { Toaster } from 'sonner';
 
 import { ThemeProvider } from '@/components/theme-provider';
@@ -56,7 +58,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased"><StackProvider app={stackServerApp}><StackTheme>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -66,7 +68,7 @@ export default async function RootLayout({
           <Toaster position="top-center" />
           {children}
         </ThemeProvider>
-      </body>
+      </StackTheme></StackProvider></body>
     </html>
   );
 }
